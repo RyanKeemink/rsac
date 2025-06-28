@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import React from "react";
 import { client } from "@/sanity/client";
 import { RotatingTagline } from "@/components/RotatingTagline";
