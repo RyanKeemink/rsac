@@ -253,7 +253,7 @@ export function GallerySection({
               <EmblaSimpleGallery images={activeCategory.images} />
             </div>
           ) : (
-            <p className="text-white text-center">Geen foto's beschikbaar.</p>
+            <p className="text-white text-center">Geen foto&apos;s beschikbaar.</p>
           )}
         </div>
         {/* Beschrijving */}
