@@ -1,0 +1,39 @@
+.embla-sponsors {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.embla-sponsors__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla-sponsors__container {
+  display: flex;
+}
+
+.embla-sponsors__slide {
+  flex: 0 0 33.3333%; /* 3 logos per view */
+  max-width: 33.3333%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.embla-sponsors__img {
+  width: 200px;    /* groter */
+  height: 120px;   /* groter */
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s;
+}
+
+.embla-sponsors__img:hover {
+  transform: scale(1.07);
+}

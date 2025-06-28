@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "./embla-gallery.css";
+@import "./sponsors-carousel.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --slot-word-height: 1.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rotating-slot {
+  display: inline-block;
+  position: relative;
+  height: var(--slot-word-height);
+  overflow: hidden;
+  vertical-align: middle;
+  width: 10ch; /* optioneel: vaste breedte voor uitlijning */
+}
+
+.rotating-slot-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+}
+
+.rotating-slot-word {
+  height: var(--slot-word-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem; /* text-base of text-lg */
+  font-family: inherit; /* of bijvoorbeeld 'Montserrat', 'Inter', etc. */
+}
