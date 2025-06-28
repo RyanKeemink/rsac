@@ -61,95 +61,106 @@ export default async function IndexPage() {
       {/* Sticky Navbar */}
       <Navbar logoUrl={homepage?.logoUrl} />
 
-      {/* Hero met overlay, animatie en responsive */}
-      <section className="relative w-full h-[420px] flex items-center justify-center mb-12 overflow-hidden shadow-lg">
-        {homepage?.imageUrl && (
-          <>
-            <img
-              src={homepage.imageUrl}
-              alt="Hero"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: "center" }}
-            />
-            <div className="absolute inset-0 bg-[#102040]/80" />
-          </>
-        )}
-        {/* Content wrapper */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <div className="text-center text-white flex flex-col items-center animate-fade-in">
-            {homepage?.logoUrl && (
-              <div className="bg-white/20 rounded-full p-4 mb-4 shadow-lg backdrop-blur-sm inline-block">
-                <img
-                  src={homepage.logoUrl}
-                  alt="RSAC Logo"
-                  className="h-28 drop-shadow-lg"
-                  style={{ maxWidth: "180px", objectFit: "contain" }}
-                />
-              </div>
-            )}
-            {homepage?.subtext && (
-              <p className="mt-2 mb-4 text-lg font-medium drop-shadow">
-                {homepage.subtext}
-              </p>
-            )}
-            {homepage?.taglines && homepage.taglines.length > 0 && (
-              <RotatingTagline taglines={homepage.taglines} />
+      <main aria-label="Hoofdinhoud" className="flex-1 flex flex-col">
+        {/* Hero met overlay, animatie en responsive */}
+        <section className="relative w-full h-[420px] flex items-center justify-center mb-12 overflow-hidden shadow-lg" aria-label="Hero">
+          {homepage?.imageUrl && (
+            <>
+              <img
+                src={homepage.imageUrl}
+                alt="Hero"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: "center" }}
+              />
+              <div className="absolute inset-0 bg-[#102040]/80" />
+            </>
+          )}
+          {/* Content wrapper */}
+          <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+            <div className="text-center text-white flex flex-col items-center animate-fade-in">
+              {homepage?.logoUrl && (
+                <div className="bg-white/20 rounded-full p-4 mb-4 shadow-lg backdrop-blur-sm inline-block">
+                  <img
+                    src={homepage.logoUrl}
+                    alt="RSAC Logo"
+                    className="h-28 drop-shadow-lg"
+                    style={{ maxWidth: "180px", objectFit: "contain" }}
+                  />
+                </div>
+              )}
+              {homepage?.subtext && (
+                <p className="mt-2 mb-4 text-lg font-medium drop-shadow">
+                  {homepage.subtext}
+                </p>
+              )}
+              {homepage?.taglines && homepage.taglines.length > 0 && (
+                <RotatingTagline taglines={homepage.taglines} />
+              )}
+            </div>
+            {/* Overlay Info & sign up knop */}
+            <a
+              href="/signup"
+              className="px-8 h-12 md:h-14 py-3 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 rounded-full text-white font-bold shadow-lg text-base md:text-lg transition inline-block mt-8 text-center flex items-center justify-center"
+              style={{
+                minWidth: "220px",
+              }}
+            >
+              Info & sign up
+            </a>
+          </div>
+        </section>
+
+        {/* Info en Agenda sectie */}
+        <section className="max-w-5xl mx-auto w-full mt-8 flex flex-col md:flex-row gap-8" aria-label="Info en Agenda">
+          {/* Linkerkant: Info uit Sanity */}
+          <div className="md:w-1/2 w-full bg-white rounded-xl shadow p-6 flex flex-col justify-center">
+            <h2 className="text-2xl font-bold mb-4 text-[#102040]">
+              Welkom bij de RSAC!
+            </h2>
+            {homepage?.infoSection && (
+              <PortableText value={homepage.infoSection} />
             )}
           </div>
-          {/* Overlay Info & sign up knop */}
-          <a
-            href="/signup"
-            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 rounded-full text-white font-bold shadow-lg text-lg transition inline-block mt-8 text-center"
-            style={{
-              minWidth: "220px",
-            }}
-          >
-            Info & sign up
-          </a>
-        </div>
-      </section>
+          {/* Rechterkant: Google Agenda */}
+          <div className="md:w-1/2 w-full bg-white rounded-xl shadow p-4 flex flex-col items-center">
+            <h2 className="text-2xl font-bold mb-4 text-[#102040]">Agenda</h2>
+            <iframe
+              src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FAmsterdam&mode=AGENDA&showPrint=0&showCalendars=0&showTitle=0&src=MDQwNGQwM2EwOTk3NzYxZTZjNTk0YjlkMTczMDY3OGExOTAzZjYyNTgxMDA3OTU2MzdlOTIzNTA1ZDRjZmZiMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5"
+              style={{ border: 0 }}
+              width="100%"
+              height="400"
+              frameBorder="0"
+              scrolling="no"
+              title="RSAC Agenda"
+              className="rounded"
+            ></iframe>
+          </div>
+        </section>
 
-      {/* Info en Agenda sectie */}
-      <section className="max-w-5xl mx-auto w-full mt-8 flex flex-col md:flex-row gap-8">
-        {/* Linkerkant: Info uit Sanity */}
-        <div className="md:w-1/2 w-full bg-white rounded-xl shadow p-6 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold mb-4 text-[#102040]">
-            Welkom bij de RSAC!
-          </h2>
-          {homepage?.infoSection && (
-            <PortableText value={homepage.infoSection} />
-          )}
-        </div>
-        {/* Rechterkant: Google Agenda */}
-        <div className="md:w-1/2 w-full bg-white rounded-xl shadow p-4 flex flex-col items-center">
-          <h2 className="text-2xl font-bold mb-4 text-[#102040]">Agenda</h2>
-          <iframe
-            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FAmsterdam&mode=AGENDA&showPrint=0&showCalendars=0&showTitle=0&src=MDQwNGQwM2EwOTk3NzYxZTZjNTk0YjlkMTczMDY3OGExOTAzZjYyNTgxMDA3OTU2MzdlOTIzNTA1ZDRjZmZiMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233F51B5"
-            style={{ border: 0 }}
-            width="100%"
-            height="400"
-            frameBorder="0"
-            scrolling="no"
-            title="RSAC Agenda"
-            className="rounded"
-          ></iframe>
-        </div>
-      </section>
+        {/* Gallery Section */}
+        {gallery && gallery.categories && (
+          <GallerySection title={gallery.title} categories={gallery.categories} />
+        )}
 
-      {/* Gallery Section */}
-      {gallery && gallery.categories && (
-        <GallerySection title={gallery.title} categories={gallery.categories} />
-      )}
+        {/* Wat Doen Wij Section */}
+        {watDoenWij && watDoenWij.activiteiten && (
+          <WatDoenWijSection title={watDoenWij.title} activiteiten={watDoenWij.activiteiten} />
+        )}
 
-      {/* Wat Doen Wij Section */}
-      {watDoenWij && watDoenWij.activiteiten && (
-        <WatDoenWijSection title={watDoenWij.title} activiteiten={watDoenWij.activiteiten} />
-      )}
-
-      {/* Sponsors Section */}
-      { sponsorenSection && sponsorenSection.sponsoren && (
-  <SponsorsCarousel sponsoren={sponsorenSection.sponsoren} />
-)}
+        {/* Sponsors Section */}
+        {sponsorenSection && sponsorenSection.sponsoren && (
+          <section className="max-w-4xl mx-auto w-full my-16 px-4">
+            <h2 className="text-3xl font-bold text-[#102040] dark:text-gray-100 mb-2 text-center">
+              Partners & sponsoren
+            </h2>
+            <p className="text-center text-[#102040] dark:text-gray-200 mb-8 max-w-2xl mx-auto">
+              Dankzij onze sponsoren en partners kunnen wij onze activiteiten organiseren.<br />
+              Klik op een logo voor meer informatie of steun ons via Sponsorkliks!
+            </p>
+            <SponsorsCarousel sponsoren={sponsorenSection.sponsoren} />
+          </section>
+        )}
+      </main>
 
       {/* Footer */}
       <footer className="bg-[#102040] text-white py-6 mt-auto">
