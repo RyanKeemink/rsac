@@ -7,8 +7,9 @@ export default defineConfig({
   name: 'default',
   title: 'rsac',
 
-  projectId: 'mbdsreg9',
-  dataset: 'production',
+  projectId: process.env.SANITY_API_PROJECT_ID || '',
+  dataset: process.env.SANITY_API_DATASET || '',
+  token: process.env.SANITY_API_WRITE_TOKEN || '',
 
   plugins: [structureTool(), visionTool()],
 
