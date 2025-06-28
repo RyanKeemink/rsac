@@ -182,7 +182,7 @@ type GalleryCategory = {
   key: string;
   label: string;
   images: { asset: { url: string; altText?: string } }[];
-  description?: any;
+  description?: string;
 };
 
 export function GallerySection({
@@ -197,32 +197,8 @@ export function GallerySection({
   const activeIndex = categories.findIndex((cat) => cat.key === active);
   const activeCategory = categories[activeIndex];
 
-  const imageCount = activeCategory?.images?.length || 1;
-  // Slick settings
-  const settings = {
-    centerMode: true,
-    centerPadding: "0px",
-    slidesToShow: Math.min(5, imageCount),
-    infinite: imageCount > 3,
-    arrows: true,
-    focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: Math.min(3, imageCount),
-          infinite: imageCount > 3,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          infinite: imageCount > 1,
-        },
-      },
-    ],
-  };
+
+  
 
   return (
     <section className="w-full py-12 bg-[#102040] mt-16">
@@ -283,7 +259,11 @@ export function GallerySection({
         {/* Beschrijving */}
         {activeCategory?.description && (
           <div className="bg-white/80 rounded-lg p-4 max-w-2xl mx-auto text-[#102040]">
-            <PortableText value={activeCategory.description} />
+            {typeof activeCategory.description === "string" ? (
+              <p>{activeCategory.description}</p>
+            ) : (
+              <PortableText value={activeCategory.description} />
+            )}
           </div>
         )}
       </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 const NAV_BG = "bg-[#102040]"; // donkerblauw
 
 export function Navbar({ logoUrl }: { logoUrl?: string }) {
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   const [mobileMenu, setMobileMenu] = useState(false);
 
   // Menu items
